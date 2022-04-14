@@ -3,7 +3,10 @@ package com.garv.foreigna;
 import com.garv.foreigna.command.talk;
 import com.garv.foreigna.item.ModItems;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.networking.v1.C2SPlayChannelEvents;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.event.network.C2SPacketTypeCallback;
+import net.minecraft.network.packet.c2s.play.ChatMessageC2SPacket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,5 +29,8 @@ public class Foreigna implements ModInitializer {
 		CommandRegistrationCallback.EVENT.register((dispatcher, dedicated) -> {
 			talk.register(dispatcher);
 		});
+
+		// check the minecraft chat and see message if "hello" was sent, and if so, reply with "hi"
+
 	}
 }
